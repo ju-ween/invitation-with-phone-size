@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="en" style=""><head></head><body class="min-h-screen flex flex-col items-center justify-between p-3 md:p-6 text-espresso relative selection:bg-rose-100 selection:text-espresso"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ju Ween &amp; Charis Ooi Wedding Invitation</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;family=Cinzel:wght@400;500;600;700;800&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            script: ['"Alex Brush"', 'cursive'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+          colors: {
+            cream: '#FFFBF5',
+            champagne: '#F8F1E7',
+            parchment: '#FAF5ED',
+            ivory: '#FAF6F0',
+            espresso: '#3A2E2B',
+            warmgray: '#5C4A47',
+            gold: {
+              300: '#F5DE98',
+              400: '#DFB757',
+              500: '#C59B27',
+              600: '#A97E26',
+            },
+            rose: {
+              50: '#FFF5F5',
+              100: '#FDECEB',
+              200: '#F7D6D8',
+              300: '#E8929A',
+              400: '#D46A74',
+              500: '#B84D58',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    :root {
+      --wax-rose: radial-gradient(circle at 35% 30%, #F5A3AA 0%, #D46A74 50%, #A23A47 100%);
+      --gold-foil: linear-gradient(135deg, #FFEAB5 0%, #DFB757 50%, #A87B21 100%);
+      --light-bg: radial-gradient(circle at 50% 15%, #FFFDF9 0%, #FAF2EA 50%, #F2E4D8 100%);
+    }
+
+    body {
+      background: var(--light-bg);
+      overflow-x: hidden;
+      min-height: 100vh;
+      color: #3A2E2B;
+    }
+
+    /* Floating warm golden & blush petal sparkles */
+    .warm-sparkle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(235, 185, 110, 0.75) 0%, rgba(240, 160, 170, 0.4) 55%, transparent 100%);
+      filter: blur(0.4px);
+      animation: floatSparkle 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes floatSparkle {
+      0%, 100% { opacity: 0.2; transform: translateY(0) scale(0.9); }
+      50% { opacity: 0.9; transform: translateY(-35px) scale(1.2); }
+    }
+
+    /* 3D Perspective Stage */
+    .perspective-container {
+      perspective: 1600px;
+    }
+
+    .envelope-box {
+      transform-style: preserve-3d;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Envelope Top Flap */
+    .flap-top {
+      transform-origin: top center;
+      transition: transform 1s cubic-bezier(0.34, 1.25, 0.64, 1);
+      transform-style: preserve-3d;
+      z-index: 35;
+    }
+
+    .envelope-box.is-opened .flap-top,
+    .envelope-box.opened .flap-top {
+      transform: rotateX(180deg);
+      z-index: 10;
+    }
+
+    /* Letter Slide Out & Clean Elevation */
+    .letter-card {
+      transition: transform 1.1s cubic-bezier(0.2, 0.9, 0.3, 1.15), box-shadow 0.9s ease, opacity 0.4s ease;
+      transform: translateY(0) scale(0.96);
+      z-index: 15;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* When opened, letter elevates completely above envelope front flaps & becomes clickable */
+    .envelope-box.is-opened .letter-card,
+    .envelope-box.opened .letter-card {
+      transform: translateY(-130px) scale(1.03);
+      z-index: 80 !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      box-shadow: 0 25px 60px -12px rgba(110, 80, 70, 0.28), 0 0 35px rgba(223, 183, 87, 0.35);
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      .envelope-box.is-opened .letter-card,
+      .envelope-box.opened .letter-card {
+        transform: translateY(-110px) scale(1.01);
+      }
+    }
+
+    /* Wax Seal Button */
+    .wax-seal-wrapper {
+      filter: drop-shadow(0 10px 20px rgba(162, 58, 71, 0.3)) drop-shadow(0 4px 10px rgba(212, 106, 116, 0.4));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    .wax-seal-wrapper:active {
+      transform: scale(0.96);
+    }
+
+    .wax-seal-body {
+      background: var(--wax-rose);
+      box-shadow: inset 2px 2px 5px rgba(255, 240, 240, 0.6),
+                  inset -3px -3px 8px rgba(120, 30, 45, 0.5),
+                  0 0 0 2px rgba(212, 175, 55, 0.85);
+      position: relative;
+    }
+
+    /* Dual Symmetrical LED beams along envelope flap border */
+    .led-svg-path {
+      filter: drop-shadow(0 0 6px #FFEAB5) drop-shadow(0 0 14px #E6B800) drop-shadow(0 0 24px #DFB757);
+      transition: stroke-dashoffset 0.05s linear;
+    }
+
+    /* Circular Progress Ring */
+    .progress-ring__circle {
+      transition: stroke-dashoffset 0.05s linear;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    /* Gold Foil Text Shimmer */
+    .gold-foil-warm {
+      background: linear-gradient(120deg, #A87B21 0%, #E8C162 25%, #C59B27 50%, #FBE49D 75%, #A87B21 100%);
+      background-size: 250% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: foilShine 5.5s ease-in-out infinite alternate;
+    }
+    @keyframes foilShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Pulsing on Press */
+    .is-pressing .wax-seal-ring {
+      animation: sealPulse 0.9s ease-in-out infinite alternate;
+    }
+    @keyframes sealPulse {
+      0% { transform: scale(1); filter: brightness(1); }
+      100% { transform: scale(1.08); filter: brightness(1.2) drop-shadow(0 0 12px rgba(255, 220, 115, 0.9)); }
+    }
+
+    /* Fine Scrollbar for Letter */
+    .letter-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .letter-scroll::-webkit-scrollbar-thumb {
+      background: #DFB757;
+      border-radius: 4px;
+    }
+  </style>
+<!-- Ambient Golden & Blush Floating Particles -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0" id="sparkle-container"><div class="warm-sparkle" style="width: 3.3266px; height: 3.3266px; left: 86.3814vw; top: 23.6263vh; animation-delay: 0.896998s; animation-duration: 4.77513s;"></div><div class="warm-sparkle" style="width: 6.13976px; height: 6.13976px; left: 58.7205vw; top: 10.0639vh; animation-delay: 3.68462s; animation-duration: 6.19404s;"></div><div class="warm-sparkle" style="width: 7.49297px; height: 7.49297px; left: 96.3089vw; top: 19.3815vh; animation-delay: 2.91397s; animation-duration: 5.54181s;"></div><div class="warm-sparkle" style="width: 6.85437px; height: 6.85437px; left: 11.5095vw; top: 30.5052vh; animation-delay: 3.56309s; animation-duration: 6.7487s;"></div><div class="warm-sparkle" style="width: 4.33544px; height: 4.33544px; left: 35.9316vw; top: 94.5982vh; animation-delay: 0.591047s; animation-duration: 6.86065s;"></div><div class="warm-sparkle" style="width: 4.10598px; height: 4.10598px; left: 90.1681vw; top: 60.1606vh; animation-delay: 6.69396s; animation-duration: 5.70002s;"></div><div class="warm-sparkle" style="width: 6.02279px; height: 6.02279px; left: 28.8298vw; top: 88.2211vh; animation-delay: 6.59417s; animation-duration: 5.38534s;"></div><div class="warm-sparkle" style="width: 2.99043px; height: 2.99043px; left: 9.00154vw; top: 8.69061vh; animation-delay: 3.57049s; animation-duration: 4.69047s;"></div><div class="warm-sparkle" style="width: 2.63973px; height: 2.63973px; left: 58.9593vw; top: 93.0629vh; animation-delay: 3.07794s; animation-duration: 6.03729s;"></div><div class="warm-sparkle" style="width: 5.75555px; height: 5.75555px; left: 30.2895vw; top: 80.7311vh; animation-delay: 0.745636s; animation-duration: 4.67809s;"></div><div class="warm-sparkle" style="width: 5.92656px; height: 5.92656px; left: 7.17086vw; top: 49.6689vh; animation-delay: 6.23835s; animation-duration: 6.21021s;"></div><div class="warm-sparkle" style="width: 2.53618px; height: 2.53618px; left: 19.9294vw; top: 25.8433vh; animation-delay: 4.8406s; animation-duration: 5.85163s;"></div><div class="warm-sparkle" style="width: 3.24872px; height: 3.24872px; left: 85.2442vw; top: 71.8817vh; animation-delay: 6.27039s; animation-duration: 5.50157s;"></div><div class="warm-sparkle" style="width: 6.91603px; height: 6.91603px; left: 19.4118vw; top: 16.0995vh; animation-delay: 6.84689s; animation-duration: 6.25578s;"></div><div class="warm-sparkle" style="width: 6.62362px; height: 6.62362px; left: 98.6641vw; top: 4.06131vh; animation-delay: 0.998238s; animation-duration: 6.30213s;"></div><div class="warm-sparkle" style="width: 6.29874px; height: 6.29874px; left: 65.8609vw; top: 55.4862vh; animation-delay: 5.64045s; animation-duration: 7.26527s;"></div><div class="warm-sparkle" style="width: 4.45256px; height: 4.45256px; left: 71.3161vw; top: 84.5837vh; animation-delay: 3.51431s; animation-duration: 6.7962s;"></div><div class="warm-sparkle" style="width: 6.43453px; height: 6.43453px; left: 71.8708vw; top: 88.6691vh; animation-delay: 0.15257s; animation-duration: 6.01426s;"></div><div class="warm-sparkle" style="width: 3.22641px; height: 3.22641px; left: 81.6049vw; top: 58.5693vh; animation-delay: 4.29322s; animation-duration: 5.49172s;"></div><div class="warm-sparkle" style="width: 7.21546px; height: 7.21546px; left: 71.826vw; top: 75.7963vh; animation-delay: 5.81099s; animation-duration: 7.54837s;"></div><div class="warm-sparkle" style="width: 6.31943px; height: 6.31943px; left: 32.0903vw; top: 38.4185vh; animation-delay: 4.18923s; animation-duration: 7.68402s;"></div><div class="warm-sparkle" style="width: 5.32749px; height: 5.32749px; left: 51.9581vw; top: 60.7215vh; animation-delay: 4.75852s; animation-duration: 5.00948s;"></div><div class="warm-sparkle" style="width: 3.76996px; height: 3.76996px; left: 49.2149vw; top: 84.5185vh; animation-delay: 4.41027s; animation-duration: 6.31053s;"></div><div class="warm-sparkle" style="width: 4.71671px; height: 4.71671px; left: 15.6846vw; top: 49.5855vh; animation-delay: 6.11049s; animation-duration: 6.897s;"></div><div class="warm-sparkle" style="width: 4.03815px; height: 4.03815px; left: 2.24173vw; top: 30.2844vh; animation-delay: 1.16647s; animation-duration: 4.91449s;"></div><div class="warm-sparkle" style="width: 2.70481px; height: 2.70481px; left: 16.8935vw; top: 85.5422vh; animation-delay: 0.806923s; animation-duration: 4.93432s;"></div><div class="warm-sparkle" style="width: 3.27648px; height: 3.27648px; left: 78.6861vw; top: 46.884vh; animation-delay: 5.67714s; animation-duration: 7.97483s;"></div><div class="warm-sparkle" style="width: 4.05932px; height: 4.05932px; left: 96.4544vw; top: 95.3773vh; animation-delay: 0.69672s; animation-duration: 4.11311s;"></div><div class="warm-sparkle" style="width: 3.51315px; height: 3.51315px; left: 42.8615vw; top: 73.4857vh; animation-delay: 6.30818s; animation-duration: 5.78695s;"></div><div class="warm-sparkle" style="width: 6.55869px; height: 6.55869px; left: 70.4931vw; top: 62.8451vh; animation-delay: 6.5888s; animation-duration: 5.92352s;"></div><div class="warm-sparkle" style="width: 4.72456px; height: 4.72456px; left: 47.7488vw; top: 75.9314vh; animation-delay: 0.186792s; animation-duration: 4.89769s;"></div><div class="warm-sparkle" style="width: 7.27752px; height: 7.27752px; left: 79.841vw; top: 33.202vh; animation-delay: 2.60453s; animation-duration: 6.79299s;"></div><div class="warm-sparkle" style="width: 3.79561px; height: 3.79561px; left: 82.8846vw; top: 82.2993vh; animation-delay: 6.12271s; animation-duration: 5.65688s;"></div><div class="warm-sparkle" style="width: 5.2053px; height: 5.2053px; left: 32.5245vw; top: 74.2334vh; animation-delay: 4.40162s; animation-duration: 7.80213s;"></div><div class="warm-sparkle" style="width: 7.38536px; height: 7.38536px; left: 12.3153vw; top: 6.51256vh; animation-delay: 4.93051s; animation-duration: 5.89971s;"></div><div class="warm-sparkle" style="width: 4.8325px; height: 4.8325px; left: 46.9769vw; top: 30.2363vh; animation-delay: 3.28668s; animation-duration: 7.29579s;"></div><div class="warm-sparkle" style="width: 3.02004px; height: 3.02004px; left: 48.9824vw; top: 4.91619vh; animation-delay: 3.48029s; animation-duration: 5.53609s;"></div><div class="warm-sparkle" style="width: 5.19112px; height: 5.19112px; left: 81.6817vw; top: 79.0008vh; animation-delay: 0.826162s; animation-duration: 7.40552s;"></div><div class="warm-sparkle" style="width: 3.41909px; height: 3.41909px; left: 38.5335vw; top: 45.8536vh; animation-delay: 1.54462s; animation-duration: 4.93638s;"></div><div class="warm-sparkle" style="width: 6.19849px; height: 6.19849px; left: 24.0705vw; top: 87.373vh; animation-delay: 2.22249s; animation-duration: 4.45854s;"></div><div class="warm-sparkle" style="width: 7.36537px; height: 7.36537px; left: 99.3536vw; top: 19.8487vh; animation-delay: 1.81278s; animation-duration: 7.51994s;"></div><div class="warm-sparkle" style="width: 4.32417px; height: 4.32417px; left: 99.9733vw; top: 42.2092vh; animation-delay: 3.99936s; animation-duration: 6.30846s;"></div><div class="warm-sparkle" style="width: 2.62855px; height: 2.62855px; left: 53.7256vw; top: 78.9436vh; animation-delay: 4.7808s; animation-duration: 7.29128s;"></div><div class="warm-sparkle" style="width: 2.68284px; height: 2.68284px; left: 48.959vw; top: 60.6965vh; animation-delay: 6.36107s; animation-duration: 7.77188s;"></div><div class="warm-sparkle" style="width: 4.24721px; height: 4.24721px; left: 66.4457vw; top: 61.4891vh; animation-delay: 5.27125s; animation-duration: 6.37712s;"></div><div class="warm-sparkle" style="width: 5.07822px; height: 5.07822px; left: 49.9257vw; top: 54.6176vh; animation-delay: 3.52432s; animation-duration: 4.45836s;"></div><div class="warm-sparkle" style="width: 4.20629px; height: 4.20629px; left: 83.7356vw; top: 0.874694vh; animation-delay: 2.82149s; animation-duration: 7.78838s;"></div><div class="warm-sparkle" style="width: 5.16764px; height: 5.16764px; left: 31.5872vw; top: 26.4185vh; animation-delay: 1.56368s; animation-duration: 5.6051s;"></div><div class="warm-sparkle" style="width: 6.59657px; height: 6.59657px; left: 61.7541vw; top: 6.16885vh; animation-delay: 5.95274s; animation-duration: 7.66121s;"></div><div class="warm-sparkle" style="width: 6.14519px; height: 6.14519px; left: 18.3045vw; top: 82.3761vh; animation-delay: 6.65557s; animation-duration: 5.00679s;"></div><div class="warm-sparkle" style="width: 2.87146px; height: 2.87146px; left: 85.3813vw; top: 33.216vh; animation-delay: 4.07807s; animation-duration: 7.56195s;"></div><div class="warm-sparkle" style="width: 6.31919px; height: 6.31919px; left: 43.9406vw; top: 47.5935vh; animation-delay: 2.05346s; animation-duration: 4.85652s;"></div><div class="warm-sparkle" style="width: 6.09205px; height: 6.09205px; left: 71.4474vw; top: 17.1141vh; animation-delay: 5.25498s; animation-duration: 4.15787s;"></div><div class="warm-sparkle" style="width: 5.70397px; height: 5.70397px; left: 69.8924vw; top: 74.0111vh; animation-delay: 0.151256s; animation-duration: 6.82435s;"></div><div class="warm-sparkle" style="width: 7.05816px; height: 7.05816px; left: 16.8016vw; top: 25.5654vh; animation-delay: 4.01669s; animation-duration: 7.18049s;"></div><div class="warm-sparkle" style="width: 4.28733px; height: 4.28733px; left: 48.2212vw; top: 58.6153vh; animation-delay: 0.226242s; animation-duration: 7.21907s;"></div></div>
+<!-- Warm Ethereal Light Halos Behind Envelope -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[650px] bg-gradient-to-tr from-amber-200/30 via-rose-200/35 to-orange-100/30 rounded-full blur-[110px] pointer-events-none z-0"></div>
+<div class="fixed top-1/4 left-1/2 -translate-x-1/2 w-[450px] h-[350px] bg-amber-100/40 rounded-full blur-[80px] pointer-events-none z-0"></div>
+<!-- Header Banner -->
+<header class="relative z-10 text-center pt-2 mb-2 transition-all duration-700 w-full max-w-sm px-3 mx-auto" id="invitation-header"><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-400/40 bg-white/80 backdrop-blur-md mb-2 shadow-sm"><span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span><span class="text-[10px] uppercase tracking-[0.25em] text-[#7A4E45] font-cinzel font-semibold">Celebration of Love</span></div><h1 class="text-2xl sm:text-3xl font-cinzel tracking-wider font-light text-espresso mb-1 drop-shadow-sm flex items-center justify-center flex-wrap gap-x-1.5"><span class="gold-foil-warm font-medium">JU WEEN</span><span class="font-script text-3xl sm:text-4xl text-[#D46A74] mx-1 font-normal">&amp;</span><span class="gold-foil-warm font-medium">CHARIS OOI</span></h1><p class="text-[10px] sm:text-xs font-sans tracking-[0.2em] text-[#7A4E45] font-normal uppercase mt-0.5">Cordially request the pleasure of your company</p></header>
+<!-- Interactive Instruction & Status Pill -->
+<div class="relative z-10 mb-2 flex flex-col sm:flex-row items-center gap-2 justify-center w-full max-w-sm px-3 mx-auto"><div class="transition-all duration-500 flex items-center justify-center gap-1.5 px-3 py-1 rounded-full border border-amber-400/40 text-[#5C4A47] text-[11px] tracking-wide font-sans shadow-sm bg-white/80 backdrop-blur-md text-center" id="instruction-pill"><span class="material-symbols-outlined text-sm text-[#C59B27] animate-bounce" id="instruction-icon">touch_app</span><span id="instruction-text">Hold the <strong class="text-[#B84D58] font-semibold">Wax Seal</strong> to unlock</span></div><button class="px-3.5 py-1 rounded-full bg-gradient-to-r from-[#DFB757] via-[#D09F30] to-[#C59B27] hover:brightness-105 text-white border border-amber-300/60 text-[10px] font-cinzel tracking-wider transition-all duration-300 shadow-md flex items-center gap-1 active:scale-95 cursor-pointer" id="quick-action-btn"><span class="material-symbols-outlined text-xs" id="quick-action-icon">visibility</span><span id="quick-btn-label">Instant Open</span></button></div>
+<!-- 3D Perspective Stage Container -->
+<main class="perspective-container relative z-10 w-full max-w-sm h-[380px] sm:h-[420px] flex items-center justify-center my-auto px-2">
+<!-- The Envelope Container -->
+<div class="envelope-box relative w-full max-w-[340px] h-[215px] sm:max-w-[360px] sm:h-[225px] shadow-2xl rounded-xl cursor-pointer" id="envelope-root" title="Click or hold wax seal to open">
+<!-- Ambient Floor Shadow -->
+<div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[92%] h-14 bg-stone-900/15 blur-2xl rounded-full transition-all duration-700 pointer-events-none" id="envelope-shadow"></div>
+<!-- 1. ENVELOPE INNER BACKING (Delicate floral pearlized parchment) -->
+<div class="absolute inset-0 bg-[#F5ECE1] rounded-xl border border-amber-400/30 overflow-hidden shadow-inner z-10">
+<!-- Elegant Gold Floral Damask Motif inside pocket -->
+<div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(#D4AF37 1.2px, transparent 1.2px), radial-gradient(#D4AF37 1.2px, #F5ECE1 1.2px); background-size: 24px 24px; background-position: 0 0, 12px 12px;"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-amber-100/30 via-transparent to-rose-200/20"></div>
+</div>
+<!-- 2. THE WEDDING LETTER (Elevates out cleanly on open) -->
+<div aria-label="Open full letter view" class="letter-card absolute inset-2 bg-[#FCFAF7] text-espresso rounded-lg shadow-xl overflow-hidden flex flex-col border border-amber-300/80 cursor-pointer" id="wedding-letter" role="button"><div class="absolute inset-1.5 border border-amber-400/40 pointer-events-none rounded flex flex-col justify-between p-1.5"><div class="flex justify-between items-center text-amber-600/80 text-[10px]"><span>✤</span><span>✤</span></div><div class="flex justify-between items-center text-amber-600/80 text-[10px]"><span>✤</span><div class="flex items-center gap-1 opacity-70"><div class="w-5 h-[1px] bg-amber-400"></div><span class="text-[8px] font-cinzel text-amber-800 uppercase tracking-widest">Love • Faith</span><div class="w-5 h-[1px] bg-amber-400"></div></div><span>✤</span></div></div><div class="relative z-10 p-3 sm:p-4 flex-1 flex flex-col justify-between gap-1 text-center letter-scroll overflow-y-auto"><div class="flex items-center justify-center gap-2"><div class="w-8 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-amber-500"></div><div class="w-5 h-5 rounded-full bg-amber-50 border border-amber-300 flex items-center justify-center text-amber-600 text-[10px]">✤</div><div class="w-8 h-[1px] bg-gradient-to-l from-transparent via-amber-400 to-amber-500"></div></div><div class="my-auto py-1"><h2 class="font-cinzel text-[10px] font-bold tracking-[0.2em] text-[#9C7A3C] uppercase">Welcome to</h2><div class="my-1.5"><span class="font-script text-2xl text-[#B84D58] font-normal leading-tight block">Ju Ween</span><div class="flex items-center justify-center gap-1.5 my-0.5"><div class="w-4 h-[1px] bg-amber-400/50"></div><span class="font-cinzel text-[10px] text-amber-800 tracking-widest font-semibold">&amp;</span><div class="w-4 h-[1px] bg-amber-400/50"></div></div><span class="font-script text-2xl text-[#B84D58] font-normal leading-tight block">Charis Ooi</span></div><p class="font-serif italic text-xs text-stone-700 max-w-[260px] mx-auto leading-snug my-1">“Getting married isn’t like ordering a Grab — you can’t just book it and expect it to arrive immediately. 😂”</p></div><div class="flex items-center justify-center gap-2 pt-0.5"><button class="px-3 py-1 rounded-full bg-[#FAF5EE] hover:bg-[#F2E7D8] text-[#7A4E45] border border-amber-300 font-cinzel text-[9px] tracking-wider transition-all active:scale-95 flex items-center gap-1 shadow-sm" id="btn-read-modal"><span class="material-symbols-outlined text-[11px] text-amber-700">open_in_full</span><span>View Full Letter</span></button><button class="px-3 py-1 rounded-full border border-stone-300 hover:bg-stone-100 text-stone-700 font-cinzel text-[9px] tracking-wider transition-all active:scale-95 flex items-center gap-1 bg-white" id="btn-reclose"><span class="material-symbols-outlined text-[11px]">close</span><span>Close</span></button></div></div></div>
+<!-- 3. ENVELOPE FRONT BODY (Light, Pearlescent Ivory & Soft Warm Paper) -->
+<div class="absolute inset-0 pointer-events-none z-30 overflow-hidden rounded-xl">
+<svg class="w-full h-full" fill="none" preserveaspectratio="none" viewbox="0 0 580 360">
+<defs>
+<lineargradient id="pocketGradLight" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FAF4EB"></stop>
+<stop offset="50%" stop-color="#F4ECE0"></stop>
+<stop offset="100%" stop-color="#ECE2D4"></stop>
+</lineargradient>
+<lineargradient id="sideLeftGradLight" x1="0%" x2="100%" y1="0%" y2="50%">
+<stop offset="0%" stop-color="#FCF8F2"></stop>
+<stop offset="100%" stop-color="#F1E7DA"></stop>
+</lineargradient>
+<lineargradient id="sideRightGradLight" x1="100%" x2="0%" y1="0%" y2="50%">
+<stop offset="0%" stop-color="#FCF8F2"></stop>
+<stop offset="100%" stop-color="#F1E7DA"></stop>
+</lineargradient>
+<filter height="120%" id="pocketShadowLight" width="120%" x="-10%" y="-10%">
+<fedropshadow dx="0" dy="-3" flood-color="#7A6559" flood-opacity="0.18" stddeviation="5"></fedropshadow>
+</filter>
+</defs>
+<!-- Left Flap Fold -->
+<polygon fill="url(#sideLeftGradLight)" opacity="0.99" points="0,0 290,180 0,360"></polygon>
+<!-- Right Flap Fold -->
+<polygon fill="url(#sideRightGradLight)" opacity="0.99" points="580,0 290,180 580,360"></polygon>
+<!-- Bottom Pocket Fold -->
+<polygon fill="url(#pocketGradLight)" filter="url(#pocketShadowLight)" points="0,360 290,150 580,360"></polygon>
+<!-- Crisp Refined Gold Foil Trim Lines -->
+<line stroke="#DFB757" stroke-opacity="0.75" stroke-width="1.2" x1="0" x2="290" y1="360" y2="150"></line>
+<line stroke="#DFB757" stroke-opacity="0.75" stroke-width="1.2" x1="580" x2="290" y1="360" y2="150"></line>
+</svg>
+</div>
+<!-- 4. ENVELOPE TOP FLAP (With Golden Running LED Contour) -->
+<div class="flap-top absolute top-0 left-0 w-full h-[115px] pointer-events-none" id="envelope-flap">
+<div class="relative w-full h-full">
+<svg class="w-full h-full overflow-visible drop-shadow-[0_8px_16px_rgba(110,85,75,0.2)]" fill="none" viewbox="0 0 580 190">
+<defs>
+<lineargradient id="flapGradLight" x1="0%" x2="50%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FFFFFF"></stop>
+<stop offset="50%" stop-color="#F8EFE4"></stop>
+<stop offset="100%" stop-color="#EDE0D0"></stop>
+</lineargradient>
+<filter height="200%" id="ledGlowLight" width="200%" x="-50%" y="-50%">
+<fegaussianblur result="coloredBlur" stddeviation="3.5"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Base Triangle Flap -->
+<polygon fill="url(#flapGradLight)" points="0,0 580,0 290,188" stroke="#DFB757" stroke-opacity="0.8" stroke-width="1.2"></polygon>
+<!-- Subtle Highlight Folds -->
+<line stroke="#FFF" stroke-opacity="0.9" stroke-width="1.5" x1="20" x2="290" y1="12" y2="182"></line>
+<line stroke="#D4AF37" stroke-opacity="0.25" stroke-width="1.5" x1="560" x2="290" y1="12" y2="182"></line>
+<!-- Static Golden Edge Guide -->
+<polyline fill="none" id="led-track-base" points="0,0 290,188 580,0" stroke="#DFB757" stroke-opacity="0.45" stroke-width="1.5"></polyline>
+<!-- RUNNING LED GLOWING BEAMS: Symmetrical dual-beam from CENTER (290,188) outward to left (0,0) and right (580,0) -->
+<!-- Left Beam: Originates at center tip (290, 188) and traces upward-left to (0, 0) -->
+<line class="led-svg-path transition-opacity duration-200 opacity-0" filter="url(#ledGlowLight)" id="led-beam-left" stroke="#FFDF73" stroke-dasharray="345" stroke-dashoffset="345" stroke-linecap="round" stroke-width="5" x1="290" x2="0" y1="188" y2="0"></line>
+<!-- Right Beam: Originates at center tip (290, 188) and traces upward-right to (580, 0) -->
+<line class="led-svg-path transition-opacity duration-200 opacity-0" filter="url(#ledGlowLight)" id="led-beam-right" stroke="#FFDF73" stroke-dasharray="345" stroke-dashoffset="345" stroke-linecap="round" stroke-width="5" x1="290" x2="580" y1="188" y2="0"></line>
+</svg>
+</div>
+</div>
+<!-- 5. INTERACTIVE WAX SEAL BUTTON (Pure Embossed Rose, No Wording) -->
+<div class="absolute left-1/2 top-[112px] sm:top-[118px] -translate-x-1/2 -translate-y-1/2 z-50 flex items-center justify-center pointer-events-auto" id="wax-seal-container"><div aria-label="Press and hold wax seal to open invitation" class="wax-seal-wrapper w-20 h-20 sm:w-20 sm:h-20 relative flex items-center justify-center cursor-pointer select-none touch-none active:scale-95" id="wax-seal-button" role="button" tabindex="0"><svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewbox="0 0 100 100"><circle cx="50" cy="50" fill="none" r="44" stroke="rgba(223, 183, 87, 0.35)" stroke-width="3.5"></circle><circle cx="50" cy="50" fill="none" id="hold-progress-circle" r="44" stroke="url(#goldRingGradLight)" stroke-dasharray="276.46" stroke-dashoffset="276.46" stroke-linecap="round" stroke-width="4.5"></circle><defs><lineargradient id="goldRingGradLight" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FFF4D0"></stop><stop offset="50%" stop-color="#DFB757"></stop><stop offset="100%" stop-color="#B8861B"></stop></lineargradient></defs></svg><div class="wax-seal-body w-16 h-16 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-300"><svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30 mix-blend-overlay" viewbox="0 0 80 80"><path d="M40 3 C 48 3, 56 6, 64 12 C 73 20, 77 30, 76 42 C 75 54, 70 65, 59 72 C 48 78, 32 77, 21 72 C 10 65, 4 52, 4 40 C 4 28, 11 15, 23 8 C 30 4, 35 3, 40 3 Z" fill="#FFFFFF"></path></svg><div class="wax-seal-ring flex flex-col items-center justify-center text-center z-10"><div class="w-12 h-12 rounded-full border border-amber-200/90 flex items-center justify-center bg-black/10 shadow-inner relative p-1"><svg class="w-full h-full drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]" fill="none" viewbox="0 0 100 100"><circle cx="50" cy="50" opacity="0.6" r="44" stroke="#FFEAB5" stroke-dasharray="2 2" stroke-width="1.5"></circle><path d="M50 24 C57 24 64 28 66 35 C68 42 62 49 55 50 C46 51 40 45 42 38 C44 32 50 30 54 33 C57 35 56 40 52 41 C49 42 47 39 49 37" stroke="#FFE4A0" stroke-linecap="round" stroke-width="2.4"></path><path d="M38 34 C31 38 27 46 29 55 C31 63 39 70 48 71 C58 72 67 67 71 58 C74 50 71 42 66 36" stroke="#FFDF73" stroke-linecap="round" stroke-width="2"></path><path d="M35 48 C30 54 31 64 38 71 C45 78 56 79 65 74 C73 70 77 60 75 51" stroke="#FFEAB5" stroke-linecap="round" stroke-width="1.8"></path><path d="M44 26 C36 29 27 36 25 45 C23 57 28 69 38 77 C48 84 62 84 72 77 C81 70 85 57 82 46 C80 38 74 30 66 26" stroke="#DFB757" stroke-linecap="round" stroke-width="1.5"></path><circle cx="50" cy="50" fill="#FFEAB5" r="2.5"></circle></svg></div></div><div class="absolute inset-0 bg-radial from-amber-200/60 via-transparent to-transparent opacity-0 transition-opacity duration-150 pointer-events-none" id="hold-flare"></div></div></div></div>
+</div>
+</main>
+<!-- Visual Confetti Burst Canvas -->
+<canvas class="fixed inset-0 pointer-events-none z-50" height="802" id="burst-canvas" width="1280"></canvas>
+<!-- Interactive Footer Controls -->
+<footer class="relative z-10 py-1 mb-1 flex items-center justify-center text-[11px] font-sans text-[#7A4E45]"><div class="flex items-center gap-2 bg-white/80 backdrop-blur-md border border-amber-400/30 px-4 py-1.5 rounded-full shadow-sm"><button class="text-[#B84D58] hover:text-[#8E323D] font-semibold underline underline-offset-2 cursor-pointer" id="footer-toggle-btn">Toggle Envelope</button><span class="text-stone-300">|</span><button class="text-[#9C7A3C] hover:text-[#7A5B20] font-medium cursor-pointer" id="footer-expand-btn">Full Letter</button></div></footer>
+<!-- Fullscreen Letter Modal View for Effortless Reading -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/40 backdrop-blur-sm transition-opacity duration-300 p-4 opacity-0 pointer-events-none" id="letter-modal">
+<div class="bg-[#FCFAF7] text-espresso border border-amber-300/80 rounded-2xl p-6 sm:p-8 max-w-xs sm:max-w-sm w-full shadow-2xl relative text-center max-h-[85vh] overflow-y-auto letter-scroll"><div class="absolute top-3 left-4 text-amber-600/70 text-sm">✤</div><div class="absolute top-3 right-4 text-amber-600/70 text-sm">✤</div><div class="absolute bottom-3 left-4 text-amber-600/70 text-sm">✤</div><div class="absolute bottom-3 right-4 text-amber-600/70 text-sm">✤</div><div class="w-10 h-10 rounded-full bg-amber-50 border border-amber-300/70 mx-auto flex items-center justify-center mb-3 text-[#C59B27]"><span class="material-symbols-outlined text-xl">favorite</span></div><h3 class="font-cinzel text-xs font-bold text-[#9C7A3C] tracking-[0.2em] uppercase leading-snug">Welcome to</h3><div class="my-3"><span class="font-script text-3xl sm:text-4xl text-[#B84D58] block leading-tight">Ju Ween</span><span class="font-cinzel text-xs text-amber-700 tracking-widest font-semibold block my-1">&amp;</span><span class="font-script text-3xl sm:text-4xl text-[#B84D58] block leading-tight">Charis Ooi</span></div><div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-3"></div><p class="font-serif italic text-sm sm:text-base text-stone-700 leading-relaxed my-3 px-1">“Getting married isn’t like ordering a Grab — you can’t just book it and expect it to arrive immediately. 😂”</p><p class="font-serif text-xs text-stone-600 leading-relaxed my-2 px-2 border-t border-amber-200/60 pt-2">Together with our families, we joyfully invite you to share in our laughter, celebration, and happily-ever-after.</p><div class="pt-3 flex justify-center"><button class="px-6 py-2 rounded-full bg-gradient-to-r from-[#DFB757] via-[#D09F30] to-[#C59B27] hover:brightness-105 text-white font-cinzel text-xs tracking-wider transition-all shadow cursor-pointer active:scale-95" id="modal-close-btn">Close Letter</button></div></div>
+</div>
+<script>
+    (function () {
+      const sealBtn = document.getElementById('wax-seal-button');
+      const sealContainer = document.getElementById('wax-seal-container');
+      const progressCircle = document.getElementById('hold-progress-circle');
+      const holdFlare = document.getElementById('hold-flare');
+      const beamLeft = document.getElementById('led-beam-left');
+      const beamRight = document.getElementById('led-beam-right');
+      const envelopeRoot = document.getElementById('envelope-root');
+      const weddingLetter = document.getElementById('wedding-letter');
+      const instructionText = document.getElementById('instruction-text');
+      const instructionPill = document.getElementById('instruction-pill');
+      const instructionIcon = document.getElementById('instruction-icon');
+      const quickActionBtn = document.getElementById('quick-action-btn');
+      const quickBtnLabel = document.getElementById('quick-btn-label');
+      const quickActionIcon = document.getElementById('quick-action-icon');
+      const footerToggleBtn = document.getElementById('footer-toggle-btn');
+      const footerExpandBtn = document.getElementById('footer-expand-btn');
+      const btnReclose = document.getElementById('btn-reclose');
+      const btnReadModal = document.getElementById('btn-read-modal');
+      const burstCanvas = document.getElementById('burst-canvas');
+      const ctx = burstCanvas.getContext('2d');
+
+      const letterModal = document.getElementById('letter-modal');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+
+      function resizeCanvas() {
+        burstCanvas.width = window.innerWidth;
+        burstCanvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      let isHolding = false;
+      let holdStartTime = 0;
+      let holdReqId = null;
+      let isOpened = false;
+      const HOLD_DURATION = 1200; // 1.2s duration
+      const CIRCLE_CIRCUMFERENCE = 276.46;
+      const HALF_FLAP_LENGTH = 345;
+
+      // Warm background particles
+      const sparkleContainer = document.getElementById('sparkle-container');
+      for (let i = 0; i < 28; i++) {
+        const span = document.createElement('div');
+        span.className = 'warm-sparkle';
+        const size = Math.random() * 5 + 2.5;
+        span.style.width = size + 'px';
+        span.style.height = size + 'px';
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.top = Math.random() * 100 + 'vh';
+        span.style.animationDelay = (Math.random() * 7) + 's';
+        span.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        sparkleContainer.appendChild(span);
+      }
+
+      // Confetti physics
+      let particles = [];
+      function triggerGoldParticles(x, y) {
+        const colors = ['#FFEAB5', '#DFB757', '#F7D6D8', '#FFFFFF', '#D46A74', '#F4ECE0'];
+        for (let i = 0; i < 75; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 8 + 3;
+          particles.push({
+            x: x,
+            y: y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2.5,
+            size: Math.random() * 6 + 3,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            vRot: (Math.random() - 0.5) * 14,
+            alpha: 1,
+            gravity: 0.18
+          });
+        }
+        animateParticles();
+      }
+
+      let isParticleLoopRunning = false;
+      function animateParticles() {
+        if (!isParticleLoopRunning && particles.length > 0) {
+          isParticleLoopRunning = true;
+          requestAnimationFrame(renderParticles);
+        }
+      }
+
+      function renderParticles() {
+        ctx.clearRect(0, 0, burstCanvas.width, burstCanvas.height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.rotation += p.vRot;
+          p.alpha -= 0.015;
+
+          if (p.alpha <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.75);
+          ctx.restore();
+        }
+
+        if (particles.length > 0) {
+          requestAnimationFrame(renderParticles);
+        } else {
+          isParticleLoopRunning = false;
+          ctx.clearRect(0, 0, burstCanvas.width, burstCanvas.height);
+        }
+      }
+
+      // HOLD MECHANIC with bilateral center-to-outward running LED animation
+      function startHolding(e) {
+        if (isOpened) return;
+        if (e && e.cancelable && e.type !== 'touchstart') e.preventDefault();
+
+        isHolding = true;
+        holdStartTime = performance.now();
+        sealBtn.classList.add('is-pressing');
+        holdFlare.style.opacity = '0.9';
+
+        beamLeft.classList.remove('opacity-0');
+        beamRight.classList.remove('opacity-0');
+        beamLeft.style.strokeDashoffset = HALF_FLAP_LENGTH;
+        beamRight.style.strokeDashoffset = HALF_FLAP_LENGTH;
+
+        instructionText.innerHTML = '<span class="text-[#B84D58] font-bold tracking-wider animate-pulse">BREAKING SEAL... KEEP HOLDING</span>';
+        if (instructionIcon) instructionIcon.textContent = 'lock_open';
+
+        function stepHold(now) {
+          if (!isHolding) return;
+          const elapsed = now - holdStartTime;
+          const progress = Math.min(elapsed / HOLD_DURATION, 1);
+
+          // Wax seal ring
+          const offsetCircle = CIRCLE_CIRCUMFERENCE * (1 - progress);
+          progressCircle.style.strokeDashoffset = offsetCircle;
+
+          // Symmetrical dual LED sweep from center outward
+          const offsetBeams = HALF_FLAP_LENGTH * (1 - progress);
+          beamLeft.style.strokeDashoffset = offsetBeams;
+          beamRight.style.strokeDashoffset = offsetBeams;
+
+          if (progress >= 1) {
+            completeOpenSequence();
+          } else {
+            holdReqId = requestAnimationFrame(stepHold);
+          }
+        }
+        holdReqId = requestAnimationFrame(stepHold);
+      }
+
+      function cancelHolding() {
+        if (isOpened || !isHolding) return;
+        isHolding = false;
+        if (holdReqId) cancelAnimationFrame(holdReqId);
+
+        sealBtn.classList.remove('is-pressing');
+        progressCircle.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
+        holdFlare.style.opacity = '0';
+
+        beamLeft.classList.add('opacity-0');
+        beamRight.classList.add('opacity-0');
+        beamLeft.style.strokeDashoffset = HALF_FLAP_LENGTH;
+        beamRight.style.strokeDashoffset = HALF_FLAP_LENGTH;
+
+        instructionText.innerHTML = 'Press &amp; hold the <strong class="text-[#B84D58] font-semibold">Wax Seal</strong> to unlock, or use Instant Open';
+        if (instructionIcon) instructionIcon.textContent = 'touch_app';
+      }
+
+      function completeOpenSequence() {
+        isHolding = false;
+        isOpened = true;
+        if (holdReqId) cancelAnimationFrame(holdReqId);
+
+        beamLeft.style.strokeDashoffset = 0;
+        beamRight.style.strokeDashoffset = 0;
+        beamLeft.classList.remove('opacity-0');
+        beamRight.classList.remove('opacity-0');
+
+        // Confetti burst
+        const sealRect = sealBtn.getBoundingClientRect();
+        triggerGoldParticles(sealRect.left + sealRect.width / 2, sealRect.top + sealRect.height / 2);
+
+        // Move seal with top flap
+        sealContainer.style.transition = 'transform 1s cubic-bezier(0.34, 1.25, 0.64, 1), opacity 0.7s ease';
+        sealContainer.style.transform = 'translate(-50%, -180px) rotateX(170deg) scale(0.8)';
+        sealContainer.style.opacity = '0.2';
+        sealContainer.style.pointerEvents = 'none';
+
+        // Add both is-opened and opened class for robust CSS targeting
+        envelopeRoot.classList.add('is-opened');
+        envelopeRoot.classList.add('opened');
+
+        // Ensure wedding letter is foregrounded & clickable
+        weddingLetter.style.zIndex = '80';
+        weddingLetter.style.opacity = '1';
+        weddingLetter.style.pointerEvents = 'auto';
+
+        instructionPill.classList.remove('bg-white/85');
+        instructionPill.classList.add('bg-rose-50/90', 'border-rose-300');
+        instructionText.innerHTML = '✨ <strong class="text-[#B84D58]">Letter Unlocked:</strong> Click letter to view in full';
+        if (instructionIcon) instructionIcon.textContent = 'mark_email_read';
+
+        quickBtnLabel.textContent = 'Fold Envelope';
+        if (quickActionIcon) quickActionIcon.textContent = 'close_fullscreen';
+      }
+
+      function closeEnvelope() {
+        isOpened = false;
+        isHolding = false;
+        envelopeRoot.classList.remove('is-opened');
+        envelopeRoot.classList.remove('opened');
+
+        sealContainer.style.transform = 'translate(-50%, -50%) scale(1)';
+        sealContainer.style.opacity = '1';
+        sealContainer.style.pointerEvents = 'auto';
+        progressCircle.style.strokeDashoffset = CIRCLE_CIRCUMFERENCE;
+        holdFlare.style.opacity = '0';
+        sealBtn.classList.remove('is-pressing');
+
+        beamLeft.classList.add('opacity-0');
+        beamRight.classList.add('opacity-0');
+        beamLeft.style.strokeDashoffset = HALF_FLAP_LENGTH;
+        beamRight.style.strokeDashoffset = HALF_FLAP_LENGTH;
+
+        weddingLetter.style.zIndex = '15';
+        weddingLetter.style.opacity = '0.7';
+        weddingLetter.style.pointerEvents = 'none';
+
+        instructionPill.classList.add('bg-white/85');
+        instructionPill.classList.remove('bg-rose-50/90', 'border-rose-300');
+        instructionText.innerHTML = 'Press &amp; hold the <strong class="text-[#B84D58] font-semibold">Wax Seal</strong> to unlock, or use Instant Open';
+        if (instructionIcon) instructionIcon.textContent = 'touch_app';
+
+        quickBtnLabel.textContent = 'Instant Open Letter';
+        if (quickActionIcon) quickActionIcon.textContent = 'visibility';
+      }
+
+      function toggleEnvelope() {
+        if (!isOpened) {
+          completeOpenSequence();
+        } else {
+          closeEnvelope();
+        }
+      }
+
+      function openModal() {
+        letterModal.classList.remove('opacity-0', 'pointer-events-none');
+      }
+
+      function closeModal() {
+        letterModal.classList.add('opacity-0', 'pointer-events-none');
+      }
+
+      // Interaction listeners: Press & hold on wax seal
+      sealBtn.addEventListener('mousedown', startHolding);
+      window.addEventListener('mouseup', cancelHolding);
+      sealBtn.addEventListener('touchstart', startHolding, { passive: true });
+      window.addEventListener('touchend', cancelHolding);
+      window.addEventListener('touchcancel', cancelHolding);
+
+      // Single click on wax seal or closed envelope opens it directly as well
+      sealBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (!isOpened) {
+          completeOpenSequence();
+        }
+      });
+
+      envelopeRoot.addEventListener('click', function (e) {
+        if (!isOpened) {
+          completeOpenSequence();
+        }
+      });
+
+      // Keyboard accessibility
+      sealBtn.addEventListener('keydown', (e) => {
+        if ((e.code === 'Space' || e.code === 'Enter') && !isHolding && !isOpened) {
+          completeOpenSequence();
+        }
+      });
+
+      quickActionBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleEnvelope();
+      });
+
+      footerToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleEnvelope();
+      });
+
+      footerExpandBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+
+      btnReclose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeEnvelope();
+      });
+
+      btnReadModal.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal();
+      });
+
+      // Clicking on the letter once opened expands it into full legible modal
+      weddingLetter.addEventListener('click', (e) => {
+        if (isOpened) {
+          e.stopPropagation();
+          openModal();
+        } else {
+          completeOpenSequence();
+        }
+      });
+
+      modalCloseBtn.addEventListener('click', closeModal);
+      letterModal.addEventListener('click', (e) => {
+        if (e.target === letterModal) closeModal();
+      });
+    })();
+  </script>
+</body></html>
